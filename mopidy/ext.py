@@ -48,8 +48,11 @@ class Extension(object):
 
         :returns: bytes or unicode
         """
-        raise NotImplementedError(
-            'Add at least a config section with "enabled = true"')
+        if self.ext_name is not None:
+            conf_file = os.path.join(os.path.dirname(__file__), self.ext_name+'/ext.conf')
+            return config_lib.read(conf_file)
+
+        raise NotImplementedError('Add at least a config section with "enabled = true"')
 
     def get_config_schema(self):
         """The extension's config validation schema

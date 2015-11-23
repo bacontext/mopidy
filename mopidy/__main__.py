@@ -49,6 +49,7 @@ logger = logging.getLogger(__name__)
 def main():
     log.bootstrap_delayed_logging()
     logger.info('Starting Mopidy %s', versioning.get_version())
+    logger.info('KIM SUCKS!!!!')
 
     signal.signal(signal.SIGTERM, process.exit_handler)
     # Windows does not have signal.SIGUSR1
